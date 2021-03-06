@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_modular: ^2.0.1
+  dio:
   dartz:
   flutter:
     sdk: flutter
