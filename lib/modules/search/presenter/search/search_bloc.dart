@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:semana_flutter/modules/search/domain/usecases/search_by_text.dart';
 import 'package:semana_flutter/modules/search/presenter/search/state/state.dart';
+import 'package:rxdart/rxdart.dart';
 
 class SearchBloc extends Bloc<String, SearchState>{
   final SearchByText usecase;
@@ -14,6 +15,9 @@ class SearchBloc extends Bloc<String, SearchState>{
     yield result.fold((l) => SearchError(l), (r) => SearchSuccess(r));
   }
 
-
+  @override
+  Stream<Transition<String, SearchState>> transformEvents(Stream<String> events, transitionFn) {
+    return super.transformEvents(events.debounceTime(Duration(microseconds: 800)), transitionFn);
+  }
 
 }

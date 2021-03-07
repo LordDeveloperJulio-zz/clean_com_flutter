@@ -7,6 +7,7 @@ import 'package:semana_flutter/modules/search/external/datasources/github_dataso
 import 'package:semana_flutter/modules/search/infra/repositories/search_repository_impl.dart';
 
 import 'app_widget.dart';
+import 'modules/search/presenter/search/search_bloc.dart';
 import 'modules/search/presenter/search/search_page.dart';
 
 class AppModule extends MainModule {
@@ -16,6 +17,7 @@ class AppModule extends MainModule {
     Bind((i) => GithubDatasource(i())),
     Bind((i) => SearchRepositoryImpl(i())),
     Bind((i) => SearchByTextImpl(i())),
+    Bind((i) => SearchBloc(i())),
   ];
 
   @override
